@@ -1,530 +1,103 @@
-
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamburgueria do Chef</title>
-  <link href="https://fonts.googleapis.com/css2?family=Honk&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-    }
-    header {
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
-    }
-    header img {
-      height: 60px;
-      vertical-align: middle;
-    }
-    header h1 {
-      display: inline;
-      font-family: 'Honk', cursive;
-      font-size: 2.5em;
-      margin-left: 10px;
-    }
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #5422f7;
-      margin: 0;
-      padding: 0;
-      color: #fff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tá Com Fome </title>
+    <link rel="stylesheet" href="style.css">
+    
 
-    header {
-      background-color: #300aa3;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-family: 'Honk', sans-serif;
-      font-size: 48px;
-      color: #98d5f8;
-    }
-
-    .logo {
-      max-width: 120px;
-      display: block;
-      margin: 0 auto 10px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 10px;
-      color: #000;
-    }
-
-    h2 {
-      text-align: center;
-      color: #5422f7;
-    }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    form input,
-    form select {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      flex: 1;
-      min-width: 200px;
-    }
-
-    form input[type="button"] {
-      background-color: #300aa3;
-      color: #fff;
-      cursor: pointer;
-      flex: 1;
-    }
-
-    .category-section {
-      margin-top: 40px;
-    }
-
-    .category-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #300aa3;
-      padding-bottom: 5px;
-    }
-
-    .card-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .card {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      background-color: #f4f4f4;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .card img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .card-content {
-      flex: 1;
-    }
-
-    .card-content h3,
-    .card-content p {
-      margin: 5px 0;
-    }
-
-    .card .price {
-      font-size: 18px;
-      color: #e67e22;
-      font-weight: bold;
-    }
-
-    .card .delete-btn {
-      background-color: #c00;
-      color: white;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-
-    #generate-link,
-    #generate-menu {
-      background-color: #28a745;
-      margin-top: 10px;
-      padding: 10px;
-      border-radius: 5px;
-      color: white;
-      cursor: pointer;
-      border: none;
-    }
-    .modal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 400px;
-      font-family: Arial;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-    .modal-content h2 {
-      margin-top: 0;
-      font-size: 22px;
-      text-align: center;
-    }
-    .modal-content label {
-      display: block;
-      margin-bottom: 12px;
-    }
-    .modal-content input,
-    .modal-content select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 4px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    .modal-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-    .modal-buttons button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .modal-buttons button:first-child {
-      background: #28a745;
-      color: white;
-    }
-    .modal-buttons button:last-child {
-      background: #dc3545;
-      color: white;
-    }
-  </style>
 </head>
 <body>
+    <div class="header">
+        <img id="logoImg" src="Figura1-transformed.png" alt="Logo" width="200">
+        <h1> Tá Com Fome </h1>
+        <button id="btnSair" class="hidden" onclick="logout()">Sair</button>
+    </div>
+     <!-- Login -->
+     <div class="login" id="login">
+        <h2>Login</h2>
+        <label>Usuário</label>
+        <input type="text" id="usuario">
+        <label>Senha</label>
+        <input type="password" id="senha">
+        <button onclick="logar()">Entrar</button>
+    </div>
+    <!-- Admin -->
+    <div class="admin hidden" id="admin">
+        <h2>Logo da Hamburgueria</h2>
+        <input type="file" id="logoInput" accept="image/*">
 
-<header>
-  <img src="logo.png" alt="Logo da Hamburgueria">
-  <h1>Hamburgueria do Chef</h1>
-</header>
-<div class="container">
-  <h2>Cadastro de Produto</h2>
-  <form id="product-form">
-    <input type="text" id="product-name" placeholder="Nome do Produto" required />
-    <input type="text" id="product-description" placeholder="Descrição" required />
-    <input type="number" id="product-price" placeholder="Preço" step="0.01" required />
-    <input type="file" id="product-image" accept="image/*" required />
-    <select id="product-category" required>
-      <option value="">Categoria</option>
-      <option value="Hambúrgueres">Hambúrgueres</option>
-      <option value="Hot Dogs">Hot Dogs</option>
-      <option value="Porções">Porções</option>
-      <option value="Mascotes">Mascotes</option>
-      <option value="Bebidas">Bebidas</option>
-    </select>
-    <input type="button" value="Adicionar Produto" onclick="addNewProduct()" />
-  </form>
-  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <button id="generate-link" onclick="generateMenuLink()">Gerar Link do Cardápio</button>
-    <button id="generate-menu" onclick="openMenu()">Gerar Cardápio</button>
-  </div>
-  <div id="menu-container"></div>
-  <div class="cart">
-    <h2>🛒 Seu Carrinho</h2>
-    <div id="cart-items"></div>
-    <p><strong>Total: R$ <span id="total-price">0.00</span></strong></p>
-    <button class="finalize-btn" onclick="window.opener.document.getElementById('checkout-modal').style.display = 'flex';">Finalizar Pedido</button>
-  </div>
+        <h2>Cadastro de Categoria</h2>
+        <input type="text" id="novaCategoria" placeholder="Nome da Categoria">
+        <button onclick="adicionarCategoria()">Adicionar Categoria</button>
 
+        <h2>Cadastro de Produto</h2>
+        <input type="text" id="nomeProduto" placeholder="Nome do Produto">
+        <input type="text" id="precoProduto" placeholder="Preço">
+        <textarea id="itensProduto" placeholder="Itens do produto (separados por vírgula)"></textarea>
+        <input type="file" id="imagemProduto" accept="image/*">
+        <select id="selectCategoria"></select>
+        <button onclick="adicionarProduto()">Adicionar Produto</button>
 
-<!-- Modal de finalização -->
-<div id="checkout-modal" class="modal" style="display:none;">
-  <div class="modal-content">
-    <h2>Finalizar Pedido</h2>
-    <label>Forma de pagamento:
-      <select id="payment-method" required>
-        <option value="">Selecione</option>
-        <option value="Pix">Pix</option>
-        <option value="Cartão">Cartão</option>
-        <option value="Dinheiro">Dinheiro</option>
-      </select>
-    </label>
+        <button onclick="mostrarCardapio()">Ir para o Cardápio</button>
+        <button onclick="compartilharCardapio()">Compartilhar Cardápio</button>
+   
+        <button id="btn-excluir-produto" onclick="excluirProduto()">Excluir Produto</button>
+        <select id="select-produto">
+           <option value="">Selecione um produto</option>
+        </select>
 
-    <div id="troco-field" style="display:none;">
-      <label>Troco para quanto?
-        <input type="number" id="troco" placeholder="Ex: 50.00">
-      </label>
+        <button id="btn-excluir-categoria" onclick="excluirCategoria()">Excluir Categoria</button>
+        <select id="select-categoria">
+           <option value="">Selecione uma categoria</option>
+        </select>
+     
+    
     </div>
 
-    <label>Endereço:
-      <input type="text" id="endereco" placeholder="Rua, número, bairro" required>
-    </label>
-
-    <div class="modal-buttons">
-      <button onclick="enviarPedido()">Enviar Pedido</button>
-      <button onclick="fecharModal()">Cancelar</button>
+    <!-- Cardápio -->
+    <div class="cardapio hidden" id="cardapio">
+        <h2>Cardápio</h2>
+        <div id="listaCardapio"></div>
+        <button onclick="mostrarCarrinho()">Finalizar Pedido</button>
+        <button onclick="voltarAdmin()">Voltar ao Admin</button>
     </div>
-  </div>
-</div>
 
-<script>
-    let cart = [];
-    products = JSON.parse(localStorage.getItem("products")) || [];
-
-    
-
-    function addNewProduct() {
-      const name = document.getElementById('product-name').value;
-      const desc = document.getElementById('product-description').value;
-      const price = parseFloat(document.getElementById('product-price').value);
-      const category = document.getElementById('product-category').value;
-      const imageFile = document.getElementById('product-image').files[0];
-      if (!name || !desc || isNaN(price) || !imageFile || !category) {
-        alert("Preencha todos os campos!");
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const imageData = e.target.result;
-        const product = {
-          id: Date.now(),
-          name,
-          desc,
-          price,
-          category,
-          image: imageData
-        };
-        products.push(product);
-        localStorage.setItem("products", JSON.stringify(products));
-        renderMenu();
-        document.getElementById('product-form').reset();
-      };
-      reader.readAsDataURL(imageFile);
-    }
-
-    function renderMenu() {
-      const container = document.getElementById('menu-container');
-      container.innerHTML = '';
-      const categories = [...new Set(products.map(p => p.category))];
-      categories.forEach(category => {
-        const section = document.createElement('div');
-        section.className = 'category-section';
-        const title = document.createElement('h3');
-        title.className = 'category-title';
-        title.textContent = category;
-        section.appendChild(title);
-        const list = document.createElement('div');
-        list.className = 'card-grid';
-        products.filter(p => p.category === category).forEach(product => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <div class="card-content">
-              <h3>${product.name}</h3>
-              <p>${product.desc}</p>
-              <p class="price">R$ ${product.price.toFixed(2)}</p>
-              <button class="delete-btn" onclick="deleteProduct(${product.id})">Excluir</button>
-            </div>
-          `;
-          list.appendChild(card);
-        });
-        section.appendChild(list);
-        container.appendChild(section);
-      });
-    }
-
-    function deleteProduct(id) {
-      products = products.filter(p => p.id !== id);
-      localStorage.setItem("products", JSON.stringify(products));
-      renderMenu();
-    }
-
-    function generateMenuLink() {
-      const blob = new Blob([JSON.stringify(products)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      prompt("Copie o link do cardápio abaixo:", url);
-    }
-
-    function addToCart(name, price) {
-      const obs = prompt("Deseja acrescentar ou retirar algo? (opcional)");
-      cart.push({ name, price, obs });
-      alert("Produto adicionado ao carrinho!");
-    }
-    function openMenu() {
-  const newWin = window.open('', '_blank');
-  const styles = `
-    <style>
-      body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
-      h1 { text-align: center; color: #300aa3; }
-      .category { margin-top: 30px; }
-      .category h2 { color: #5422f7; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-      .product { display: flex; gap: 20px; background: white; padding: 15px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-      .product img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; }
-      .info { flex: 1; }
-      .info h3 { margin: 0 0 5px; }
-      .info p { margin: 3px 0; }
-      .price { color: #e67e22; font-weight: bold; }
-      .add-btn { background-color: #28a745; color: white; padding: 8px 12px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer; }
-m: 10px; padding: 10px; border-bottom: 1px solid #ccc; }
-      .cart-item span { display
-      .cart { background: #fff; border-radius: 10px; padding: 15px; margin-top: 40px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-      .cart h2 { color: #300aa3; margin-bottom: 15px; }
-      .cart-item { margin-botto: block; }
-      .finalize-btn { background-color: #300aa3; color: white; padding: 10px 15px; border: none; border-radius: 5px; margin-top: 10px; cursor: pointer; }
-    </style>
-  `;
-
-  const cartJS = `
-  <script>
-    function finalizeOrder() {
-      window.opener.document.getElementById("checkout-modal").style.display = "flex";
-    }
-    
-    const cart = [];
-
-    function addToCart(product) {
-      const obs = prompt("Deseja acrescentar ou retirar algo? (opcional)") || "";
-      cart.push({ product, obs });
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartDiv = document.getElementById("cart-items");
-      cartDiv.innerHTML = "";
-      let total = 0;
-
-      cart.forEach((item, index) => {
-        total += item.product.price;
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = \`
-          <ul style="list-style: none; padding: 0; margin: 0;">
-            <li><strong>Produto:</strong> \${item.product.name}</li>
-            <li><strong>Descrição:</strong> \${item.product.desc}</li>
-            <li><strong>Observação:</strong> \${item.obs || "Nenhuma"}</li>
-            <li><strong>Preço:</strong> R$ \${item.product.price.toFixed(2)}</li>
-          </ul>
-          <button style="background-color: #c00; color: white; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;" onclick="removeFromCart(\${index})">X</button>
-        \`;
-        cartDiv.appendChild(div);
-      });
-
-      document.getElementById("total-price").textContent = total.toFixed(2);
-      window.opener.cart = cart;
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-    <\/script>
-  `;
-  const menuHTML = products.length ? `
-  <h1>Cardápio Digital</h1>
-  ${[...new Set(products.map(p => p.category))].map(category => {
-      const items = products.filter(p => p.category === category).map(p => `
-      <div class="product">
-        <img src="${p.image}" alt="${p.name}">
-        <div class="info">
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <p class="price">R$ ${p.price.toFixed(2)}</p>
-          <button class="add-btn" onclick="addToCart({name: '${p.name}', price: ${p.price}, desc: '${p.desc}'})">Adicionar ao Carrinho</button>
+    <!-- Carrinho Modal -->
+    <div class="carrinho-modal" id="carrinhoModal">
+        <h2>Resumo do Pedido</h2>
+        <div id="itensCarrinho"></div>
+        <h3>Forma de Pagamento</h3>
+        <div class="radio-group">
+            <label><input type="radio" name="pagamento" value="dinheiro" onchange="toggleTroco()"> Dinheiro</label>
+            <label><input type="radio" name="pagamento" value="cartao" onchange="toggleTroco()"> Cartão</label>
+            <label><input type="radio" name="pagamento" value="pix" onchange="toggleTroco()"> PIX</label>
         </div>
-      </div>
-    `).join('');
-      return `<div class="category"><h2>${category}</h2>${items}</div>`;
-    }).join('')}
+        <input type="text" id="trocoPara" class="hidden" placeholder="Troco para quanto?">
+        <h3>Entrega ou Retirada</h3>
+        <div class="radio-group">
+            <label><input type="radio" name="entregaRetirada" value="retirada" onchange="toggleEndereco()"> Retirada</label>
+            <label><input type="radio" name="entregaRetirada" value="entrega" onchange="toggleEndereco()"> Entrega</label>
+        </div>
+        <label for="nomeCliente">Nome do Cliente:</label>
+        <input type="text" id="nomeCliente" required>
+        <div id="enderecoCampos" class="hidden">
+            <input type="text" id="endereco" placeholder="Endereço">
+            <input type="text" id="bairro" placeholder="Bairro">
+            <input type="text" id="numero" placeholder="Número">
+        </div>
+        <button onclick="confirmarPedido()">Confirmar Pedido</button>
+        <button onclick="fecharCarrinho()">Fechar</button>
+    </div>
 
-  <div class="cart">
-    <h2>🛒 Seu Carrinho</h2>
-    <div id="cart-items"></div>
-    <p><strong>Total: R$ <span id="total-price">0.00</span></strong></p>
-    <button class="finalize-btn" onclick="window.opener.document.getElementById('checkout-modal').style.display = 'flex';">Finalizar Pedido</button>
-  </div>
-` : `<p>Nenhum produto cadastrado ainda.</p>`;
-newWin.document.write(`<html><head><title>Cardápio</title>${styles}</head><body>${menuHTML}${cartJS}</body></html>`);
-newWin.document.close();
-}
-    // Exibe o menu ao carregar a página
-    window.addEventListener("load", renderMenu);
+    <!-- Tela de Pedidos -->
+    <div class="tela-pedidos hidden" id="telaPedidos">
+        <h2>Pedido Confirmado!</h2>
+        <div id="detalhesPedido"></div>
+        <button onclick="voltarCardapio()">Voltar ao Cardápio</button>
+    </div>
 
-
-function finalizeOrder() {
-  document.getElementById("checkout-modal").style.display = "flex";
-}
-
-function fecharModal() {
-  document.getElementById("checkout-modal").style.display = "none";
-  document.getElementById("payment-method").value = "";
-  document.getElementById("troco").value = "";
-  document.getElementById("endereco").value = "";
-  document.getElementById("troco-field").style.display = "none";
-}
-
-document.getElementById("payment-method").addEventListener("change", function() {
-  const metodo = this.value;
-  document.getElementById("troco-field").style.display = (metodo === "Dinheiro") ? "block" : "none";
-});
-
-function updateCart() {
-  // Função apenas placeholder para limpar carrinho visualmente
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function enviarPedido() {
-  const metodo = document.getElementById("payment-method").value;
-  const troco = document.getElementById("troco").value.trim();
-  const endereco = document.getElementById("endereco").value.trim();
-
-  if (!metodo || !endereco || (metodo === "Dinheiro" && troco === "")) {
-    alert("Preencha todos os campos obrigatórios.");
-    return;
-  }
-
-  let message = "*Pedido: Tá com Fome? Para e Come!*\n\n";
-  cart.forEach((item) => {
-    message += `🍔 *${item.name}*\nObs: ${item.obs || "Nenhuma"}\nPreço: R$ ${item.price.toFixed(2)}\n\n`;
-  });
-
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
-  message += `💰 *Total:* R$ ${total.toFixed(2)}\n\n`;
-  message += `💳 *Forma de pagamento:* ${metodo}\n`;
-  if (metodo === "Dinheiro") {
-    message += `💵 *Troco para:* R$ ${parseFloat(troco).toFixed(2)}\n`;
-  }
-  message += `📍 *Endereço:* ${endereco}\n`;
-
-  const phone = "5532984885431";
-  const link = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-  window.open(link, "_blank");
-
-  // Limpa tudo após envio
-  cart = [];
-  localStorage.removeItem("cart");
-  updateCart();
-  fecharModal();
-}
-</script>
-
+    <script src="script.js"></script>
+    
 </body>
 </html>
